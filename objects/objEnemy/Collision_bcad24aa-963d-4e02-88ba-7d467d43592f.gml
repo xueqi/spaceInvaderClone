@@ -3,5 +3,8 @@
 
 if (other.bid == 1) {
 	// Game over
-	objEnemy.hsp = 0
+	with objController {
+		alarm_set(GAME_OVER, 1);
+		//objEnemy.hsp = 0
+	}
 }

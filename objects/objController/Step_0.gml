@@ -2,13 +2,13 @@
 // You can write your code in this editor
 
 // check if enemy exists
+
 if (enemy_spawned) {
 	for (var i =  ds_list_size(enemies) - 1; i >= 0; --i) {
 		var lst = enemies[| i];
 		for (var j = ds_list_size(lst) - 1; j >= 0 ; --j) {
 			if (! instance_exists(lst[| j])) {
 				ds_list_delete(lst, j);
-				player_score++;
 			}
 		}
 		if (ds_list_size(lst) == 0) {
@@ -16,9 +16,10 @@ if (enemy_spawned) {
 		}
 	}
 	if (!instance_exists(objPlayer))  {
-		game_restart()
-	}
-	if (ds_list_size(enemies) > 0) {
+		
+		alarm_set(GAME_OVER, 1)
+		
+	} else if (ds_list_size(enemies) > 0) {
 		// spawn a bullet randomly
 		var toFire = random_range(1, 200);
 		if (toFire < ds_list_size(enemies)) {
@@ -36,12 +37,17 @@ if (enemy_spawned) {
 		}
 	} else {
 		enemy_spawned = false
-		// game_restart()
+		// spawn next level
+		level++
+		var spawner = instance_create_layer(0,0,"layerObject",objSpawner)
+		spawner.level = level
+		// add one life
+		objPlayer.hp++
 	}
 }
 
 // spawn boss if boss is not there
-if (boss > 0) {
+if (boss > 0 and enemy_spawned) {
 	if (! instance_exists(boss)) {
 		boss = -1;
 		alarm_set(0, 30)

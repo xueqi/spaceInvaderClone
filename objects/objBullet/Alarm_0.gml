@@ -1,6 +1,6 @@
 /// @description Play Sound
 
-// You can write your code in this editor
+// Only play sound for user shooting
 if (bid == 1) {
-audio_play_sound(sndFire, 1, false)
+	audio_play_sound(sndFire, 1, false)
 }

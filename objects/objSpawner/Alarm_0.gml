@@ -60,9 +60,9 @@ for (var col = 0; col < ncols; ++col) {
 		enemy.image_index = nrows - 1 - row
 
 		// give more score for hard enemy
-		enemy.killScore = (nrows - row) * 2
-		enemy.maxHP = nrows - row
-		enemy.hp = nrows - row
+		enemy.killScore = floor((nrows - row) * (1 + (level - 1) / 4))
+		enemy.maxHP = floor((nrows - row) * (1 + (level - 1) / 4))
+		enemy.hp = floor((nrows - row) * (1 + (level - 1) / 4))
 		lst[| row] = enemy;
 		y1 += (sheight + vspace) * scale;
 
@@ -73,6 +73,10 @@ for (var col = 0; col < ncols; ++col) {
 	
 	x1 +=  (swidth + hspace) * scale;
 }
+objEnemy.hsp = floor(1 + level / 4)
+
 with (objController) {
 	enemy_spawned = true;
 }
+
+instance_destroy()

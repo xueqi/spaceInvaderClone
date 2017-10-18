@@ -1,4 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
-
-instance_create_layer(0,0,"Instances", objController);
+if instance_exists(objController) {
+	// this is from gameover/restart, delete objController
+	with objController instance_destroy()
+	room_goto(titleRoom)
+}

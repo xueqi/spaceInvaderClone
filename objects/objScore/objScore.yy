@@ -1,28 +1,48 @@
 {
-    "id": "10b9f7fb-f3ff-4303-bebb-2e716d039be4",
+    "id": "bcf3d472-4e41-4547-b199-a69cc1302961",
     "modelName": "GMObject",
     "mvc": "1.0",
-    "name": "objSpawner",
+    "name": "objScore",
     "eventList": [
         {
-            "id": "0da3316f-7c37-4ba6-bc79-56f8aa9d8107",
+            "id": "839316a1-8ab6-4c13-8c61-faf181e5af35",
             "modelName": "GMEvent",
             "mvc": "1.0",
             "IsDnD": false,
             "collisionObjectId": "00000000-0000-0000-0000-000000000000",
             "enumb": 0,
             "eventtype": 0,
-            "m_owner": "10b9f7fb-f3ff-4303-bebb-2e716d039be4"
+            "m_owner": "bcf3d472-4e41-4547-b199-a69cc1302961"
         },
         {
-            "id": "83f6350c-6fa0-424c-94e7-6d81b2cd18de",
+            "id": "77354bcf-3479-4fd5-ba61-388839f2041c",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 8,
+            "m_owner": "bcf3d472-4e41-4547-b199-a69cc1302961"
+        },
+        {
+            "id": "f74c6c40-783c-4925-8aee-3e355dc9f90b",
             "modelName": "GMEvent",
             "mvc": "1.0",
             "IsDnD": false,
             "collisionObjectId": "00000000-0000-0000-0000-000000000000",
             "enumb": 0,
             "eventtype": 2,
-            "m_owner": "10b9f7fb-f3ff-4303-bebb-2e716d039be4"
+            "m_owner": "bcf3d472-4e41-4547-b199-a69cc1302961"
+        },
+        {
+            "id": "3efd7bed-511c-4ebb-aa77-a53671fe7a7b",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 3,
+            "m_owner": "bcf3d472-4e41-4547-b199-a69cc1302961"
         }
     ],
     "maskSpriteId": "00000000-0000-0000-0000-000000000000",
@@ -42,5 +62,5 @@
     "physicsStartAwake": true,
     "solid": false,
     "spriteId": "00000000-0000-0000-0000-000000000000",
-    "visible": false
+    "visible": true
 }
