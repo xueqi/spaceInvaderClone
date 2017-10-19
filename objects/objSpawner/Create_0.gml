@@ -1,8 +1,8 @@
 /// @description Create enemy spawn and spawn enemy
 // You can write your code in this editor
 
-nrows = 2
-ncols = 2
+nrows = 6
+ncols = 6
 hspace = 10
 vspace = 10
 startLeft = 200

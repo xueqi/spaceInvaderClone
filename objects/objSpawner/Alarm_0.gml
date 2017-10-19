@@ -58,11 +58,11 @@ for (var col = 0; col < ncols; ++col) {
 		var enemy = instance_create_layer(x1, y1, "layerEnemy", objEnemy);
 		// top Enemy has largest index
 		enemy.image_index = nrows - 1 - row
-
+		// enemy.image_blend = make_color_hsv(255,255,random(255))
 		// give more score for hard enemy
 		enemy.killScore = floor((nrows - row) * (1 + (level - 1) / 4))
-		enemy.maxHP = floor((nrows - row) * (1 + (level - 1) / 4))
-		enemy.hp = floor((nrows - row) * (1 + (level - 1) / 4))
+		enemy.maxHP = floor((nrows-row) / 3) + 1
+		enemy.hp = enemy.maxHP
 		lst[| row] = enemy;
 		y1 += (sheight + vspace) * scale;
 
@@ -73,7 +73,7 @@ for (var col = 0; col < ncols; ++col) {
 	
 	x1 +=  (swidth + hspace) * scale;
 }
-objEnemy.hsp = floor(1 + level / 4)
+objEnemy.hsp *=1.1
 
 with (objController) {
 	enemy_spawned = true;

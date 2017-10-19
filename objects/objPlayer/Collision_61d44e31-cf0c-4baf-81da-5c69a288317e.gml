@@ -7,6 +7,7 @@ if (other.bid != 1) {
 	if shield_time <= 0 {
 		hp--
 		if (hp <= 0) {
+			to_be_destroied = true
 			alarm_set(0, 1)
 			audio_play_sound(sndExplode, 1, false)
 		} else {

@@ -7,10 +7,10 @@ debug = true
 SPAWN_BOSS = 0
 DRAW_GAME_OVER_MESSAGE = 1
 GAME_OVER = 2
+SPAWN_LEVEL = 3
 
 
 // variables
-level = 1
 
 
 boss = -1;
@@ -19,14 +19,23 @@ draw_final_score = false
 enemy_spawned = false;
 enemies = ds_list_create();
 player_score = 0;
-instance_create_layer(0,0, "Instances", objSpawner);
+// level specific
+level = 1
+bossBulletSpeed = 4
+enemyBulletSpeed = 2
+playerBulletSpeed = 4
+playerhSpeed = 4
 
-instance_create_layer(512, 700, "layerPlayer", objPlayer);
+
 t = "12345"
 
-// add boss 
+// spawn first level
+alarm_set(SPAWN_LEVEL, 1)
 
-alarm_set(0, 20)
+// add boss 
+alarm_set(SPAWN_BOSS, 20)
+
+// Play background audio
 audio_play_sound(sndBackground, 0, true)
 
 // set some coordinates

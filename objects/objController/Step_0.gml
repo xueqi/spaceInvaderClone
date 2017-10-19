@@ -27,8 +27,9 @@ if (enemy_spawned) {
 			var idx = ds_list_size(lst) - 1;
 			with (lst[| idx]) {
 				with(instance_create_layer(x, y, "layerEnemy", objBullet)) {
-					direction = point_direction(x, y, objPlayer.x, objPlayer.y)
-					speed=4;
+					direction = -90
+					//direction = point_direction(x, y, objPlayer.x, objPlayer.y)
+					speed=objController.enemyBulletSpeed;
 					image_index = other.image_index;
 					image_angle = 180
 					bid=0;
@@ -39,10 +40,14 @@ if (enemy_spawned) {
 		enemy_spawned = false
 		// spawn next level
 		level++
-		var spawner = instance_create_layer(0,0,"layerObject",objSpawner)
-		spawner.level = level
+		alarm_set(SPAWN_LEVEL, 15);
+		
 		// add one life
 		objPlayer.hp++
+		playerBulletSpeed++
+		playerhSpeed++
+		enemyBulletSpeed++
+		
 	}
 }
 

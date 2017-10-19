@@ -6,7 +6,7 @@ var bullet = instance_create_layer(x, y, "layerEnemy", objBullet);
 with bullet {
 	var img_idx = random_range(0, 5);
 	direction = -90;
-	speed = 4;
+	speed = objController.bossBulletSpeed;
 	image_index = img_idx;
 	image_angle = -90;
 	rotate_rate = 1;
