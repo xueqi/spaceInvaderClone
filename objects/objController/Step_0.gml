@@ -1,5 +1,5 @@
-/// @description Insert description here
-// You can write your code in this editor
+/// @description Main game logic
+//
 
 // check if enemy exists
 
@@ -16,20 +16,26 @@ if (enemy_spawned) {
 		}
 	}
 	if (!instance_exists(objPlayer))  {
-		
 		alarm_set(GAME_OVER, 1)
-		
 	} else if (ds_list_size(enemies) > 0) {
 		// spawn a bullet randomly
-		var toFire = random_range(1, 200);
+		var toFire = random_range(0, ds_list_size(enemies) * 200);
+		// show_debug_message("toFire=" + string(toFire))
 		if (toFire < ds_list_size(enemies)) {
 			var lst = enemies[| toFire];
 			var idx = ds_list_size(lst) - 1;
 			with (lst[| idx]) {
 				with(instance_create_layer(x, y, "layerEnemy", objBullet)) {
 					direction = -90
-					//direction = point_direction(x, y, objPlayer.x, objPlayer.y)
-					speed=objController.enemyBulletSpeed;
+					if  global.roomLevel == 2 {
+						direction = point_direction(x, y, objPlayer.x, objPlayer.y)
+						var rnd = irandom_range(0, 10) % global.num_players
+						if (rnd == 0) 
+							follow_player = objController.player1
+						else
+							follow_player = objController.player2
+					}
+					speed = objController.enemyBulletSpeed;
 					image_index = other.image_index;
 					image_angle = 180
 					bid=0;
@@ -40,14 +46,10 @@ if (enemy_spawned) {
 		enemy_spawned = false
 		// spawn next level
 		level++
-		alarm_set(SPAWN_LEVEL, 15);
-		
+		alarm_set(SPAWN_LEVEL, 45);
 		// add one life
-		objPlayer.hp++
-		playerBulletSpeed++
-		playerhSpeed++
+		alarm_set(ADD_PLAYER_LIFE, 1)
 		enemyBulletSpeed++
-		
 	}
 }
 

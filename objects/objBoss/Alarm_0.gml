@@ -13,4 +13,4 @@ with bullet {
 	bid = 0;
 }
 
-alarm_set(0, 60)
+alarm_set(0, random_range(30, 90))

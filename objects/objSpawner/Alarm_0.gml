@@ -1,6 +1,8 @@
 /// @description Spawn Enemy
 
-show_debug_message("Spawning Enemies with ncols")
+// hide level title
+
+showLevel = false
 // reinitialize objController enemy array
 with (objController) {
 	enemy_spawned = false;
@@ -20,6 +22,7 @@ with (objController) {
 		}
 	}
 }
+instance_destroy(objBullet)
 
 // enemies is stored as array list
 // each list contains a column of enemies. This is used to get the bottom enemy easily
@@ -48,7 +51,8 @@ var swidth = sprite_get_width(spEnemy)
 var sheight = sprite_get_height(spEnemy)
 // set initial left
 var x1 = scrHCenter - initialWidth / 2
-
+var eLevel = global.roomLevel + objController.level
+scale *= 0.7
 for (var col = 0; col < ncols; ++col) {
 	// start y1 is fixed. Modify startTop if needed
 	var y1 = startTop;
@@ -56,24 +60,29 @@ for (var col = 0; col < ncols; ++col) {
 	objController.enemies[| col] = lst;
 	for (var row = 0; row < nrows; ++row) {
 		var enemy = instance_create_layer(x1, y1, "layerEnemy", objEnemy);
+		var idx  = row;	
+		if objController.level % 2 == 0 {
+			idx = irandom_range(0, nrows - 1)
+		}
+		
 		// top Enemy has largest index
-		enemy.image_index = nrows - 1 - row
+		enemy.image_index = nrows - 1 - idx
 		// enemy.image_blend = make_color_hsv(255,255,random(255))
 		// give more score for hard enemy
-		enemy.killScore = floor((nrows - row) * (1 + (level - 1) / 4))
-		enemy.maxHP = floor((nrows-row) / 3) + 1
+		enemy.killScore = floor((nrows - idx) * (1 + (eLevel - 1) / 4))
+		enemy.maxHP = floor((nrows-idx) / 20 * eLevel) + 1
 		enemy.hp = enemy.maxHP
 		lst[| row] = enemy;
 		y1 += (sheight + vspace) * scale;
 
-		enemy.image_xscale = scale * 0.7
-		enemy.image_yscale = scale * 0.7
-		
+		enemy.image_xscale = scale 
+		enemy.image_yscale = scale
+		enemy.hsp = objController.enemySpeed + eLevel / 2
 	}
 	
 	x1 +=  (swidth + hspace) * scale;
 }
-objEnemy.hsp *=1.1
+objEnemy.hsp *= 1.2
 
 with (objController) {
 	enemy_spawned = true;

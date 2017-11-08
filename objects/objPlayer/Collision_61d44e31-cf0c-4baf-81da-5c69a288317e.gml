@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-if (other.bid != 1) {
+if (other.bid != 1 && other.bid != 2) {
 	with (other) {
 		instance_destroy()
 	}
@@ -10,6 +10,7 @@ if (other.bid != 1) {
 			to_be_destroied = true
 			alarm_set(0, 1)
 			audio_play_sound(sndExplode, 1, false)
+			
 		} else {
 			// reset to initial position
 			x = initial_position_x
@@ -18,4 +19,5 @@ if (other.bid != 1) {
 			shield_time = 60
 		}
 	}
+	
 }

@@ -3,5 +3,5 @@
 if instance_exists(objController) {
 	// this is from gameover/restart, delete objController
 	with objController instance_destroy()
-	room_goto(titleRoom)
+	room_goto(titleRoomSelectPlayer)
 }

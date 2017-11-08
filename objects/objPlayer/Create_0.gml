@@ -13,3 +13,14 @@ initial_position_y = y
 shield_time = 30
 explode_time = 60
 to_be_destroied = false
+
+total_score = 0
+
+playerid = 1
+
+FIRE = 1
+EXPLODE = 2
+
+use_gamepad = false
+gamepad_id = -1
+use_keyboard = true
