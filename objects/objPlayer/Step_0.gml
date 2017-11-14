@@ -18,12 +18,15 @@ var move_right = false
 var fire=false
 
 if use_gamepad {
-	if keyboard_check(ord("A")) move_left = true;
-	else if keyboard_check(ord("D")) move_right = true;
-	if keyboard_check(vk_space) fire = true;
-//	if gamepad_button_check_pressed(gamepad_id, gp_padl) move_left = true;
-//	else if gamepad_button_check_pressed(gamepad_id, gp_padr) move_right = true;
-//	if gamepad_button_check_pressed(gamepad_id, gp_face1) fire = true;
+	if (gamepad_id <= 0) {
+		if keyboard_check(ord("A")) move_left = true;
+		else if keyboard_check(ord("D")) move_right = true;
+		if keyboard_check(vk_space) fire = true;
+	} else {
+		if gamepad_button_check_pressed(gamepad_id, gp_padl) move_left = true;
+		else if gamepad_button_check_pressed(gamepad_id, gp_padr) move_right = true;
+		if gamepad_button_check_pressed(gamepad_id, gp_face1) fire = true;
+	}
 }
 else if use_keyboard {
 	if keyboard_check(vk_left) move_left = true;
@@ -33,6 +36,7 @@ else if use_keyboard {
 	} else if global.num_players == 2 {
 		if keyboard_check(vk_delete) fire = true;
 		if keyboard_check(vk_numpad0) fire = true
+		if keyboard_check(vk_backspace) fire = true;
 	}
 }
 if move_left {

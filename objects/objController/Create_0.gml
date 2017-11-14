@@ -59,12 +59,14 @@ with player1 {
 }
 if (global.num_players == 1) {
 	player1.use_gamepad = global.use_gamepad
+	player1.gamepad_id = global.gamepad_id
 }
 if global.num_players == 2 {
 	player1.use_gamepad = false
 	player2 = instance_create_layer(768, 700, "layerPlayer", objPlayer);
 	player2.playerid = 2
 	player2.use_gamepad = true;
+	player2.gamepad_id = global.gamepad_id
 	with player2 {
 		image_blend = make_color_rgb(255, 0,0)
 	}

@@ -15,3 +15,10 @@ ENEMY_SPAWN = 0
 // before this, level could be set.
 showLevel = true
 alarm_set(ENEMY_SPAWN, 60)
+
+for (var i = 0; i <  gamepad_get_device_count(); ++i) 
+	if gamepad_is_connected(i) {
+		objController.gamepad_id = i;
+		break;
+	}
+	
